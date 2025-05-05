@@ -4,6 +4,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/entities/user.entity';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { MailService } from './mail/mail.service';
+import { MailModule } from './mail/mail.module';
+
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -21,6 +24,9 @@ dotenv.config();
     }),
     UserModule,
     AuthModule,
+    MailModule,
   ],
+  providers: [MailService],
+  exports: [MailService],
 })
 export class AppModule {}
